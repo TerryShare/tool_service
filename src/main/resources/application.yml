@@ -1,0 +1,22 @@
+spring:
+  thymeleaf:   #thymeleaf模板
+    cache: true
+    encoding: UTF-8
+    mode:  LEGACYHTML5
+    prefix: classpath:/templates
+    suffix: .html
+  datasource:  #数据库驱动
+    url: jdbc:mysql://47.105.179.216:3306/tool?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: Liu123!@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:          #jpa建表策略
+    show-sql: false
+    hibernate:
+      ddl-auto: create-drop
+server:         #端口
+  port: 8082
+
+
+
+
