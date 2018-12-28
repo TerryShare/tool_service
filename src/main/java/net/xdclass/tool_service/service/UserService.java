@@ -8,6 +8,14 @@ import net.xdclass.tool_service.entity.User;
  */
 public interface UserService {
 
+
+    /**
+     * 根据用户姓名查尋用戶
+     * @param username
+     * @return
+     */
+    User FindByUser(String username,String password);
+
     /**
      * 注册用户
      * @param user

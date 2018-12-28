@@ -4934,6 +4934,12 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
 .sparkline canvas{
 	width:100% !important;
 }
+
+.img{
+	position:absolute;
+	z-index: -2;
+
+}
 .cover-image {
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -4962,6 +4968,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
 	bottom:0;
 	right:0;
 	border-radius:7px;
+
 }
 .bg-transaprent .dash2{
 	position:relative;

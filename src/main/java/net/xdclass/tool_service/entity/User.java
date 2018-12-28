@@ -1,24 +1,18 @@
 package net.xdclass.tool_service.entity;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+
 
 /**
  * Greated by Terry on 2018/12/26
  * Time: 10:26
  */
-@Entity //实体
-public class User implements UserDetails {
+@Entity(name = "user") //实体
+public class User  {
 
     private static  final  long serialVersionUID = 1L;
 
@@ -56,22 +50,22 @@ public class User implements UserDetails {
         return username;
     }
 
-    @Override
+
     public boolean isAccountNonExpired() {
         return false;
     }
 
-    @Override
+
     public boolean isAccountNonLocked() {
         return false;
     }
 
-    @Override
+
     public boolean isCredentialsNonExpired() {
         return false;
     }
 
-    @Override
+
     public boolean isEnabled() {
         return false;
     }
@@ -107,7 +101,7 @@ public class User implements UserDetails {
     }
 
     //无参构造 , 已protected修饰 防止直接使用
-    protected  User(){}
+    public User(){}
 
     public  User(int id,String username,String email,String password,int code){
         this.id=id;
@@ -117,25 +111,6 @@ public class User implements UserDetails {
         this.code=code;
     }
 
-    /**
-     * 加密密码
-     *
-     * @param password
-     */
-    public void setEncodePassword(String password) {
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodePasswd = encoder.encode(password);
-        this.password = encodePasswd;
-    }
 
-    /**
-     * 抓取用户列表
-     * @return
-     */
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> simpleAuthorities = new ArrayList<>();
-        return simpleAuthorities;
-    }
 
 }
