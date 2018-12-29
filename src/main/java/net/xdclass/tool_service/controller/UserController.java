@@ -3,7 +3,6 @@ package net.xdclass.tool_service.controller;
 import net.sf.json.JSONObject;
 import net.xdclass.tool_service.entity.User;
 import net.xdclass.tool_service.service.UserService;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +25,12 @@ public class UserController {
 
     @GetMapping("login")
     public  Object login(){
-        return  new ModelAndView("/login");
+        return  new ModelAndView("/logins");
     }
 
     @PostMapping("logins")
     @ResponseBody
     public Object logins(String requestDate, HttpSession session) {
-        System.out.println("已进入");
         User user = new User();
         Map map = new HashMap();
         JSONObject requestJson = JSONObject.fromObject(requestDate);
@@ -94,7 +92,7 @@ public class UserController {
     @ResponseBody
     public Object loginout () {
 
-        return new ModelAndView("/login");
+        return new ModelAndView("/logins");
     }
 
 

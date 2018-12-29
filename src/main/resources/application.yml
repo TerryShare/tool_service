@@ -1,6 +1,6 @@
 spring:
   thymeleaf:   #thymeleaf模板
-    cache: false
+    cache: true
     encoding: UTF-8
     mode:  LEGACYHTML5
     prefix: classpath:/templates
