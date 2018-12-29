@@ -14,6 +14,12 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: create-drop
+  mail:
+    host: smtp.qq.com
+    username: 1196319567@qq.com
+    password: eflkfrfsoejlifig
+    default-encoding: UTF-8
+
 server:         #端口
   port: 8082
 

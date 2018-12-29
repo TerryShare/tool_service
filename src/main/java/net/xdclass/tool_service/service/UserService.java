@@ -23,4 +23,6 @@ public interface UserService {
      */
     User registerUser(User user);
 
+    public String send(String sender,String receiver,String title,String text);
+
 }

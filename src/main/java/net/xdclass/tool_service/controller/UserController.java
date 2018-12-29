@@ -3,6 +3,9 @@ package net.xdclass.tool_service.controller;
 import net.sf.json.JSONObject;
 import net.xdclass.tool_service.entity.User;
 import net.xdclass.tool_service.service.UserService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * Greated by Terry on 2018/12/26
  * Time: 10:58
@@ -19,6 +23,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/v1/user")
 public class UserController {
+
+    private final Logger logger= LoggerFactory.getLogger(this.getClass());
+
 
     @Autowired
     private UserService userService;
@@ -95,5 +102,14 @@ public class UserController {
         return new ModelAndView("/logins");
     }
 
+    @GetMapping("send")
+    public String send(){
+        String sender="1196319567@qq.com";
+        String receiver="yuankai.gu@bespinglobal.cn";
+        String title="Test Email";
+        String test ="hi guyuankai!!";
+        String result=userService.send(sender,receiver,title,test);
+        return result;
+    }
 
-        }
+}
