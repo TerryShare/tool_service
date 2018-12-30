@@ -4,6 +4,7 @@ import net.sf.json.JSONObject;
 import net.xdclass.tool_service.entity.User;
 import net.xdclass.tool_service.service.UserService;
 
+import net.xdclass.tool_service.util.Note;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -110,6 +113,15 @@ public class UserController {
         String test ="hi guyuankai!!";
         String result=userService.send(sender,receiver,title,test);
         return result;
+    }
+
+    @GetMapping("note")
+    public String note() throws IOException, URISyntaxException {
+        String key="";
+        String text="";
+        String mobile="";
+        userService.note(key,text,mobile);
+        return "1";
     }
 
 }
