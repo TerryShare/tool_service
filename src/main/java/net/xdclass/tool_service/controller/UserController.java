@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -117,10 +118,15 @@ public class UserController {
 
     @GetMapping("note")
     public String note() throws IOException, URISyntaxException {
-        String key="";
-        String text="";
-        String mobile="";
-        userService.note(key,text,mobile);
+        Map map=new HashMap();
+
+        String key="c2ebdebb356b2d6e408941d9b8687937";
+        String code= "LOVEYOU";
+        String mobile="13315919682";
+        long tpl_id=2685170;
+        String codes=URLEncoder.encode("#code#") + "="
+                + URLEncoder.encode(code);
+        userService.notes(key,tpl_id,codes,mobile);
         return "1";
     }
 

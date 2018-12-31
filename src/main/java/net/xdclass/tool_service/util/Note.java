@@ -13,7 +13,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,6 +65,14 @@ public class Note {
     }
 
 
+    /**
+     * 自动匹配模板
+     * @param apikey
+     * @param text
+     * @param mobile
+     * @return
+     * @throws IOException
+     */
     public String sendSms(String apikey, String text,
                           String mobile) throws IOException {
         Map < String, String > params = new HashMap < String, String > ();
@@ -74,6 +81,17 @@ public class Note {
         params.put("mobile", mobile);
         return post(URI_SEND_SMS, params);
     }
+
+    public  String tplSendSms(String apikey,long tpl_id, String codes,
+                                    String mobile) throws IOException {
+        Map<String, String> params = new HashMap<>();
+        params.put("apikey", apikey); //秘钥
+        params.put("tpl_id", String.valueOf(tpl_id));
+        params.put("tpl_value", codes); //信息
+        params.put("mobile", mobile); //电话
+        return post(URI_TPL_SEND_SMS, params);
+    }
+
     public static  String post(String url,Map<String ,String> paramsMap){
         CloseableHttpClient client= HttpClients.createDefault();
         String responseText = "";

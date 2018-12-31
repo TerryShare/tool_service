@@ -20,6 +20,7 @@ import java.net.URISyntaxException;
 @Service
 public class UserServiceImpl implements UserService{
 
+
     @Autowired
     private UserRepository userRepository;
 
@@ -74,6 +75,13 @@ public class UserServiceImpl implements UserService{
     public Note note(String apikey, String text, String mobile) throws IOException, URISyntaxException {
         Note note=new Note();
         note.sendSms(apikey,text,mobile);
+        return note;
+    }
+
+    @Override
+    public Note notes(String apikey,long tpl_id ,String codes, String mobile) throws IOException, URISyntaxException {
+        Note note=new Note();
+        note.tplSendSms(apikey,tpl_id,codes,mobile);
         return note;
     }
 

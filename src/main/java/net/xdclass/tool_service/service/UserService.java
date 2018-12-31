@@ -46,4 +46,6 @@ public interface UserService {
      * @throws IOException
      */
     public Note note(String apikey, String text, String mobile) throws IOException, URISyntaxException;
+
+    public Note notes(String apikey,long tpl_id, String codes, String mobile) throws IOException, URISyntaxException;
 }
