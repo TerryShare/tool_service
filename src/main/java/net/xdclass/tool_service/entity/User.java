@@ -38,6 +38,8 @@ public class User  {
     @Column(length = 1)
     private int code;//账户状态  0 未激活  1 已激活
 
+
+
     public int getId() {
         return id;
     }

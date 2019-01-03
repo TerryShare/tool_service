@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
+ *
+ * 短信工具类
  * Greated by Terry on 2018/12/30
  * Time: 10:43
  */
@@ -87,7 +89,7 @@ public class Note {
         Map<String, String> params = new HashMap<>();
         params.put("apikey", apikey); //秘钥
         params.put("tpl_id", String.valueOf(tpl_id));
-        params.put("tpl_value", codes); //信息
+        params.put("tpl_value", codes); //信息 tpl_value 需要转换成键值格式
         params.put("mobile", mobile); //电话
         return post(URI_TPL_SEND_SMS, params);
     }

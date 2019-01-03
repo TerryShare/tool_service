@@ -111,7 +111,7 @@ public class UserController {
         String sender="1196319567@qq.com";
         String receiver="yuankai.gu@bespinglobal.cn";
         String title="Test Email";
-        String test ="hi guyuankai!!";
+        String test ="hi guyuankai!!";//验证信息
         String result=userService.send(sender,receiver,title,test);
         return result;
     }
