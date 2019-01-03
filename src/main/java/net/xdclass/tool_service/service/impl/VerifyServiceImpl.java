@@ -15,12 +15,19 @@ import org.springframework.stereotype.Service;
 public class VerifyServiceImpl implements VerifyService{
 
     @Autowired
-    private VerifyRepository verifyRepository;
+    private VerifyRepository verifyService;
 
 
     @Override
-    public boolean setVerify(Verify verify) {
-      boolean  i = verifyRepository.save(verify);
+    public Verify setVerify(Verify verify) {
+      Verify i=  verifyService.save(verify);
         return i;
     }
+
+    @Override
+    public Verify findbyemail(String emile) {
+       Verify verify= verifyService.findByEmail(emile);
+        return verify;
+    }
+
 }

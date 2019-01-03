@@ -1,6 +1,5 @@
 package net.xdclass.tool_service.repository;
 
-import net.xdclass.tool_service.entity.User;
 import net.xdclass.tool_service.entity.Verify;
 import org.springframework.data.repository.CrudRepository;
 
@@ -8,7 +7,13 @@ import org.springframework.data.repository.CrudRepository;
  * Greated by Terry on 2019/1/3
  * Time: 17:35
  */
-public interface VerifyRepository extends CrudRepository<User ,Long> {
+public interface VerifyRepository extends CrudRepository<Verify ,Long> {
 
-    boolean save(Verify verify);
+
+
+    Verify save(Verify verify);
+
+
+    Verify findByEmail(String email);
+
 }

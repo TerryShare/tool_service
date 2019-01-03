@@ -8,5 +8,7 @@ import net.xdclass.tool_service.entity.Verify;
  */
 public interface VerifyService {
 
-    boolean setVerify(Verify verify);
+    Verify setVerify(Verify verify);
+
+    Verify findbyemail(String emile);
 }

@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Entity(name = "verify") //实体
 public class Verify {
     public  Verify(){}
-    public  Verify(int id,int emailtext,int nottext){
+    public  Verify(int id,String emailtext,String nottext){
         this.id=id;
         this.emailtext=emailtext;
         this.nottext=nottext;
@@ -18,16 +18,23 @@ public class Verify {
 
     @Id //主键
     @GeneratedValue(strategy = GenerationType.IDENTITY) //自增策略
-    @Size(max = 11)
-    private int id; //实体唯一标识
+    private Integer id; //实体唯一标识
 
-    @Size(max = 4)
-    @Column(length = 4)
-    private  int emailtext;//邮箱验证
+    @Size(max = 20)
+    @Column(length = 20)
+    private String email;
 
-    @Size(max = 4)
-    @Column(length = 4)
-    private  int nottext;//短信验证
+    @Size(max = 20)
+    @Column(length = 20)
+    private String note;
+
+    @Size(max = 10)
+    @Column(length = 10)
+    private  String emailtext;//邮箱验证
+
+    @Size(max = 10)
+    @Column(length = 10)
+    private  String nottext;//短信验证
 
     public int getId() {
         return id;
@@ -37,19 +44,35 @@ public class Verify {
         this.id = id;
     }
 
-    public int getEmailtext() {
+    public String getEmailtext() {
         return emailtext;
     }
 
-    public void setEmailtext(int emailtext) {
+    public void setEmailtext(String emailtext) {
         this.emailtext = emailtext;
     }
 
-    public int getNottext() {
+    public String getNottext() {
         return nottext;
     }
 
-    public void setNottext(int nottext) {
+    public void setNottext(String nottext) {
         this.nottext = nottext;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }
