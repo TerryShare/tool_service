@@ -122,7 +122,7 @@ public class UserController {
 
         String key="c2ebdebb356b2d6e408941d9b8687937";
         String code= "LOVEYOU";
-        String mobile="13315919682";
+        String mobile="15127062120";
         long tpl_id=2685170;
         String codes=URLEncoder.encode("#code#") + "="
                 + URLEncoder.encode(code);
