@@ -3,9 +3,11 @@ package net.xdclass.tool_service.service.impl;
 import net.xdclass.tool_service.entity.User;
 import net.xdclass.tool_service.repository.UserRepository;
 import net.xdclass.tool_service.service.UserService;
-import net.xdclass.tool_service.util.Note;
+import net.xdclass.tool_service.util.NoteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -72,17 +74,26 @@ public class UserServiceImpl implements UserService{
      * @throws IOException
      */
     @Override
-    public Note note(String apikey, String text, String mobile) throws IOException, URISyntaxException {
-        Note note=new Note();
+    public NoteUtil note(String apikey, String text, String mobile) throws IOException, URISyntaxException {
+        NoteUtil note=new NoteUtil();
         note.sendSms(apikey,text,mobile);
         return note;
     }
 
     @Override
-    public Note notes(String apikey,long tpl_id ,String codes, String mobile) throws IOException, URISyntaxException {
-        Note note=new Note();
+    public NoteUtil notes(String apikey, long tpl_id , String codes, String mobile) throws IOException, URISyntaxException {
+        NoteUtil note=new NoteUtil();
         note.tplSendSms(apikey,tpl_id,codes,mobile);
         return note;
+    }
+
+
+    @Override
+    public Page<User> listUserByNameLike(String username, Pageable pageable) {
+        //模糊查询
+        username="%"+username+"%";
+        Page<User> users=userRepository.findByUsernameLike(username,pageable);
+        return users;
     }
 
 

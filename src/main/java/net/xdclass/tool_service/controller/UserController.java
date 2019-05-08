@@ -4,19 +4,24 @@ import net.sf.json.JSONObject;
 import net.xdclass.tool_service.entity.User;
 import net.xdclass.tool_service.service.UserService;
 
-import net.xdclass.tool_service.util.Note;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -64,7 +69,6 @@ public class UserController {
             reMap.put("succ", "1");
             JSONObject jsonObject = JSONObject.fromObject(reMap);
             return jsonObject.toString();
-
         }
 
     }
@@ -130,4 +134,25 @@ public class UserController {
         return "1";
     }
 
-}
+    @GetMapping("list")
+    public  ModelAndView list(@RequestParam(value = "async",required = false)boolean async,
+                              @RequestParam(value = "pageIndex", required = false, defaultValue = "0") int pageIndex,
+                              @RequestParam(value = "pageSize", required = false, defaultValue = "3") int pageSize,
+                              @RequestParam(value = "username", required = false, defaultValue = "") String username, Model model){
+
+        Pageable pageable= PageRequest.of(pageIndex,pageSize);
+        Page<User> page=userService.listUserByNameLike(username,pageable);
+        List<User> list=page.getContent();//当前所在页面数据列表
+
+        model.addAttribute("page",page);
+        model.addAttribute("userList",list);
+        return new ModelAndView(async==true? "/list :: #mainContainerRepleace" : "/list", "userModel",
+                model);
+    }
+
+
+
+    }
+
+
+

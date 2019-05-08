@@ -23,7 +23,7 @@ import java.util.Map;
  * Greated by Terry on 2018/12/30
  * Time: 10:43
  */
-public class Note {
+public class NoteUtil {
 
 
     //查账户信息的http地址

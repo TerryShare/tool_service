@@ -32,7 +32,7 @@ public class VerifyController {
         System.out.println(b+"!!!!!!!!!!");
         Verify em=verifyService.findbyemail("12323@qq.com");
         System.out.println(em+"11111111111111111111");
-        return new ModelAndView("/fromelements");
+        return new ModelAndView("/formelements");
     }
 
     @RequestMapping("/email")

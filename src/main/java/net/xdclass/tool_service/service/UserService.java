@@ -1,7 +1,9 @@
 package net.xdclass.tool_service.service;
 
 import net.xdclass.tool_service.entity.User;
-import net.xdclass.tool_service.util.Note;
+import net.xdclass.tool_service.util.NoteUtil;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -35,7 +37,7 @@ public interface UserService {
      * @param text
      * @return
      */
-    public String send(String sender,String receiver,String title,String text);
+     String send(String sender,String receiver,String title,String text);
 
     /**
      * 发送短信
@@ -45,7 +47,18 @@ public interface UserService {
      * @return
      * @throws IOException
      */
-    public Note note(String apikey, String text, String mobile) throws IOException, URISyntaxException;
+     NoteUtil note(String apikey, String text, String mobile) throws IOException, URISyntaxException;
 
-    public Note notes(String apikey,long tpl_id, String codes, String mobile) throws IOException, URISyntaxException;
+     NoteUtil notes(String apikey, long tpl_id, String codes, String mobile) throws IOException, URISyntaxException;
+
+    /**
+     * 分页or模糊查询
+     * @param username
+     * @param pageable
+     * @return
+     */
+     Page<User> listUserByNameLike(String username , Pageable pageable);
+
+
+
 }

@@ -1,8 +1,8 @@
 spring:
   thymeleaf:   #thymeleaf模板
-    cache: true
+    cache: false
     encoding: UTF-8
-    mode:  LEGACYHTML5
+    mode:  HTML
     prefix: classpath:/templates
     suffix: .html
   datasource:  #数据库驱动
@@ -14,7 +14,8 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: create-drop
-  mail:
+    database: mysql
+  mail: #邮件验证
     host: smtp.qq.com
     username: 1196319567@qq.com
     password: eflkfrfsoejlifig
